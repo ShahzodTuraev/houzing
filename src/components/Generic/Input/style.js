@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const getType = ({type})=>{
     switch(type){
         case 'dark': 
@@ -9,7 +10,7 @@ const getType = ({type})=>{
             };
         case 'light': 
             return {
-                background: '#FFFFF', 
+                background: '#FFFFFF', 
                 border: '1px solid #E6E9EC',
                 color: '#0D263B',
             };
@@ -39,7 +40,20 @@ const Container = styled.input`
     height: ${({height})=>(height? `${height}px`:'44px')};
     outline: none;
     border: 1px solid #e6e9ec;
+    padding-left: ${({icon})=>(icon? '35px':'20px')}; 
+
      /* ${getType}; */
 `;
+const Wrapper =styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: ${({width})=>(width? `${width}px`:'100%')};
+    `;
+const Icon =styled.div`
+    position: absolute;
+    left: 10px;
+`;
 
-export {Container}
+
+export {Container, Wrapper, Icon}
