@@ -36,3 +36,10 @@ body{
   font-size: 16px;
   line-height: 24px;
 }
+
+.info{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #696969;
+}

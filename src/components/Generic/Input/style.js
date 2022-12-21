@@ -38,7 +38,7 @@ const Container = styled.input`
     font-size: ${({fontSize})=>(fontSize? `${fontSize}px`:'14px')};;
     width: ${({width})=>(width? `${width}px`:'100%')};;
     height: ${({height})=>(height? `${height}px`:'44px')};
-    outline: none;
+    outline-color: #0061DF;
     border: 1px solid #e6e9ec;
     padding-left: ${({icon})=>(icon? '35px':'20px')}; 
 

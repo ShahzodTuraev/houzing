@@ -1,4 +1,3 @@
-import { Content } from "antd/es/layout/layout";
 import styled from "styled-components";
 import {ReactComponent as arrow} from '../../assets/icons/arrow.svg'
 const Container = styled.div`
@@ -25,6 +24,7 @@ const Arrow = styled(arrow)`
 
 const Img = styled.img`
     width: 100%;
+    height: auto;
 `;
 
 const Blur = styled.div`
