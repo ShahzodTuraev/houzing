@@ -17,7 +17,7 @@ import noimg from '../../assets/img/noimage.png'
         } = data;
   return (
     <Container>
-       <Img src={attachments && attachments[0]?.imgPath || noimg}/>
+       <Img src={(attachments && attachments[0]?.imgPath) || noimg}/>
        <Content>
             <div className="subTitle inline">{city} {country} {description}</div>
             <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'}</div>
