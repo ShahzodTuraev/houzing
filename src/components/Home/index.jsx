@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <Container>
      <GenCarousel />
-     <HouseCard />
     </Container>
   )
 }

@@ -2,8 +2,16 @@ import React, {useRef} from 'react';
 import { Container, Icons, MenuWrapper, Section} from './style';
 import { Input, Button } from '../Generic';
 import { Dropdown } from 'antd';
+import { uzeReplace } from '../../hooks/uzeReplace';
+import { useNavigate, useLocation } from 'react-router-dom';
+import useSearch from '../../hooks/useSearch';
 
  export const Filter = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const query = useSearch();
+
   const countryRef =useRef();
   const regionRef =useRef();
   const cityRef =useRef();
@@ -16,17 +24,43 @@ import { Dropdown } from 'antd';
   const minRef =useRef();
   const maxpriceRef =useRef();
 
-
-
+  const onChange =({target:{name, value}})=>{
+    // console.log(name, value);
+    navigate(`${location?.pathname}${uzeReplace(name, value)}`)
+  };
 
   const menu = (
     <MenuWrapper> 
       <h1 className='subTitle'>Address</h1>
      <Section>
-      <Input ref={countryRef} placeholder='Country'/>
-      <Input ref={regionRef} placeholder='Region'/>
-      <Input ref={cityRef} placeholder='City'/>
-      <Input ref={zipRef} placeholder='Zip Code'/>
+      <Input 
+        defaultValue={query.get('country')}
+        onChange={onChange} 
+        ref={countryRef} 
+        placeholder='Country'
+        name='country'
+      />
+      <Input 
+        defaultValue={query.get('region')}
+        onChange={onChange} 
+        ref={regionRef} 
+        placeholder='Region'
+        name='region'
+      />
+      <Input
+        defaultValue={query.get('city')}
+        onChange={onChange}
+        ref={cityRef} 
+        placeholder='City'
+        name='city'
+      />
+      <Input
+        defaultValue={query.get('zip_code')}
+        onChange={onChange} 
+        ref={zipRef} 
+        placeholder='Zip Code'
+        name='zip_code'
+       />
      </Section>
     
       <h1 className='subTitle'>Apartment info</h1>
@@ -51,7 +85,8 @@ import { Dropdown } from 'antd';
     </Button>
 
     </Section>
-  </MenuWrapper>)
+  </MenuWrapper>
+  );
   return (
     <Container>
       <Input
@@ -61,6 +96,7 @@ import { Dropdown } from 'antd';
         overlay={menu} 
         placement="bottomRight" 
         arrow={{ pointAtCenter: true }}
+        trigger='click'
       >
         <div>
       <Button type='light'><Icons.Filter/>Advanced</Button>

@@ -43,3 +43,10 @@ body{
   line-height: 20px;
   color: #696969;
 }
+
+.inline{
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
