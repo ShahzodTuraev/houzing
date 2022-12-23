@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {ReactComponent as arrow} from '../../assets/icons/arrow.svg'
 const Container = styled.div`
     position: relative;
-    height: 571px;
+    height: fit-content;
 `;
 
 const Arrow = styled(arrow)`
@@ -23,9 +23,7 @@ const Arrow = styled(arrow)`
 `;
 
 const Img = styled.img`
-    width: 100%;
-    height: auto;
-`;
+    width: 100%;`;
 
 const Blur = styled.div`
     position: absolute;

@@ -12,14 +12,13 @@ const Properties = () => {
     fetch(`${url}/houses/list${search}`)
     .then((res)=>res.json())
     .then((res)=>{
-      console.log(res);
       setData(res?.data || [])
     })
   }, [search])
   return (
     <Container>
       {
-        data.map(value=>{
+        data.map((value)=>{
           return <HouseCard data={value} />
         })
       }

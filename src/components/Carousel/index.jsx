@@ -21,7 +21,7 @@ import img2 from '../../assets/img/house2.png'
         if(name === 'left') slider.current.prev();
     };
   return (
-    <Container>
+      <Container>
         <Carousel ref={slider} afterChange={onChange}>
             <Img src={img1}/>
             <Img src={img2}/>

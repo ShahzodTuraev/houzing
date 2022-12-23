@@ -52,7 +52,7 @@ import useSearch from '../../hooks/useSearch';
         onChange={onChange}
         ref={cityRef} 
         placeholder='City'
-        name='city'
+        name='address'
       />
       <Input
         defaultValue={query.get('zip_code')}

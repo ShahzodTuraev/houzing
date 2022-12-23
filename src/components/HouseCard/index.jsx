@@ -3,7 +3,7 @@ import { Container, Img, Content, Details, Icons, Divider} from './style';
 import noimg from '../../assets/img/noimage.png'
 
 
- export const HouseCard = ({data}) => {
+ export const HouseCard = ({data ={}}) => {
     console.log(data);
     const {
             attachments,
@@ -14,13 +14,14 @@ import noimg from '../../assets/img/noimage.png'
             city, 
             country, 
             description,
+            category
         } = data;
   return (
     <Container>
        <Img src={(attachments && attachments[0]?.imgPath) || noimg}/>
        <Content>
             <div className="subTitle inline">{city} {country} {description}</div>
-            <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'}</div>
+            <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'} -  {category?.name || 'Category'}</div>
             <Details>
                 <Details.Item>
                     <Icons.Bed/>
