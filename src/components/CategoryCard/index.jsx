@@ -4,11 +4,10 @@ import noimg from '../../assets/img/noimage.png';
 import category from '../../assets/img/category.png';
 
 
- export const CategoryCard = ({data ={}}) => {
-    console.log(data);
+ export const CategoryCard = ({onClick, data ={}}) => {
     const { name } = data;
   return (
-    <Container>
+    <Container onClick={onClick}>
        <Img src={category || noimg}/>
        <Blur />
        <Content>

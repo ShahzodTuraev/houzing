@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import { Container, Icons, MenuWrapper, Section} from './style';
+import React, {useRef, useEffect, useState} from 'react';
+import { Container, Icons, MenuWrapper, Section, SelectAnt} from './style';
 import { Input, Button } from '../Generic';
 import { Dropdown } from 'antd';
 import { uzeReplace } from '../../hooks/uzeReplace';
@@ -7,7 +7,17 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import useSearch from '../../hooks/useSearch';
 
  export const Filter = () => {
+  const [data, setData] = useState([]);
+  const [value, setValue] = useState('Select Category');
 
+  useEffect(()=>{
+    if(query.get('category_id')) {
+      let [res] = data.filter(ctg=>ctg.id === Number(query.get('category_id')))
+      setValue(res?.name)
+    }
+  },[])
+
+  const {REACT_APP_BASE_URL: url} = process.env;
   const navigate = useNavigate();
   const location = useLocation();
   const query = useSearch();
@@ -18,15 +28,34 @@ import useSearch from '../../hooks/useSearch';
   const zipRef =useRef();
 
   const roomsRef =useRef();
-  const sizeRef =useRef();
-  const sortRef =useRef();
-
   const minRef =useRef();
   const maxpriceRef =useRef();
 
   const onChange =({target:{name, value}})=>{
-    // console.log(name, value);
     navigate(`${location?.pathname}${uzeReplace(name, value)}`)
+  };
+
+  useEffect(()=>{
+    fetch(`${url}/categories/list`)
+    .then((res)=>res.json())
+    .then((res)=>{
+      setData(res?.data || []);
+    });
+  }, []);
+
+  useEffect(()=>{
+    let [d] = data?.filter(
+      (ctg) => ctg.id === Number(query.get('category_id'))
+    );
+    d?.name && setValue(d?.name);
+    !query.get('category_id') && setValue('Select Category');
+  }, [location?.search, data]);
+
+  const onChangeCategory =(category_id)=>{
+    navigate(`/properties/${uzeReplace('category_id', category_id)}`)
+  };
+  const onChangeSort =(sort)=>{
+    navigate(`/properties/${uzeReplace('sort', sort)}`)
   };
 
   const menu = (
@@ -65,15 +94,38 @@ import useSearch from '../../hooks/useSearch';
     
       <h1 className='subTitle'>Apartment info</h1>
     <Section>
-      <Input ref={roomsRef} placeholder='Rooms'/>
-      <Input ref={sizeRef} placeholder='Size'/>
-      <Input ref={sortRef} placeholder='Sort'/>
+      <Input 
+        defaultValue={query.get('room')}
+        onChange={onChange} 
+        ref={roomsRef} 
+        placeholder='Rooms'
+        name='room' 
+        />
+      <SelectAnt 
+        defaultValue={query.get('sort') || 'Select Sort'} 
+        onChange={onChangeSort}
+      >
+        <SelectAnt.Option value={''}>Select Sort</SelectAnt.Option>
+        <SelectAnt.Option value={'asc'}>Ascending</SelectAnt.Option>
+        <SelectAnt.Option value={'desc'}>Descending</SelectAnt.Option>
+      </SelectAnt>
+
+      <SelectAnt value={value} onChange={onChangeCategory}>
+      <SelectAnt.Option value={''}>Select Category</SelectAnt.Option>         
+        {
+          data.map((value)=>{
+            return( 
+            <SelectAnt.Option key={value.id} value={value?.id}>
+              {value?.name}
+            </SelectAnt.Option>
+            );
+          })}
+      </SelectAnt>
     </Section>  
-    
       <h1 className='subTitle'>Price</h1>
     <Section>
-      <Input ref={minRef} placeholder='Min Price'/>
-      <Input ref={maxpriceRef} placeholder='Max Price'/>
+      <Input onChange={onChange} name='min_price' ref={minRef} placeholder='Min Price'/>
+      <Input onChange={onChange} name='max_price' ref={maxpriceRef} placeholder='Max Price'/>
     </Section>
     
     <Section footer>

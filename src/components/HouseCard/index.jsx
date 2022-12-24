@@ -4,7 +4,6 @@ import noimg from '../../assets/img/noimage.png'
 
 
  export const HouseCard = ({data ={}}) => {
-    console.log(data);
     const {
             attachments,
             price, 
@@ -21,7 +20,10 @@ import noimg from '../../assets/img/noimage.png'
        <Img src={(attachments && attachments[0]?.imgPath) || noimg}/>
        <Content>
             <div className="subTitle inline">{city} {country} {description}</div>
-            <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'} -  {category?.name || 'Category'}</div>
+            <div className="info">
+                {address || 'Quincy St, Brooklyn, NY, USA'} -  
+                {category?.name || 'Category'} {houseDetails?.room ||0} rooms
+            </div>
             <Details>
                 <Details.Item>
                     <Icons.Bed/>

@@ -38,6 +38,10 @@ body{
 }
 
 .info{
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -49,4 +53,9 @@ body{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.slick-prev:before, 
+.slick-next:before{
+  color: red !important;
 }

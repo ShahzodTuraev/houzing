@@ -13,7 +13,9 @@ const Arrow = styled(arrow)`
     padding: 18px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
-    transform: ${({left}) =>(!left ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${({left}) =>(
+        left ? 'rotate(-90deg)' : 'rotate(90deg)')
+        };
     left: ${({left})=>left && '50px'};
     right: ${({left})=>!left && '20px'};
     cursor: pointer;
