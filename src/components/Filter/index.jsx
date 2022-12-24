@@ -10,13 +10,6 @@ import useSearch from '../../hooks/useSearch';
   const [data, setData] = useState([]);
   const [value, setValue] = useState('Select Category');
 
-  useEffect(()=>{
-    if(query.get('category_id')) {
-      let [res] = data.filter(ctg=>ctg.id === Number(query.get('category_id')))
-      setValue(res?.name)
-    }
-  },[])
-
   const {REACT_APP_BASE_URL: url} = process.env;
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,7 +34,7 @@ import useSearch from '../../hooks/useSearch';
     .then((res)=>{
       setData(res?.data || []);
     });
-  }, []);
+  }, [url]);
 
   useEffect(()=>{
     let [d] = data?.filter(
@@ -49,7 +42,7 @@ import useSearch from '../../hooks/useSearch';
     );
     d?.name && setValue(d?.name);
     !query.get('category_id') && setValue('Select Category');
-  }, [location?.search, data]);
+  }, [location?.search, data, query]);
 
   const onChangeCategory =(category_id)=>{
     navigate(`/properties/${uzeReplace('category_id', category_id)}`)
