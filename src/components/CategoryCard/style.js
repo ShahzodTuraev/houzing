@@ -8,6 +8,10 @@ max-height: 380px;
 min-height: 350px;
 background: #FFFFFF;   
 border-radius: 3px;
+cursor: pointer;
+:hover{
+    font-size: 22px;
+};
 filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06)) 
 drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06)) 
 drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
@@ -45,7 +49,7 @@ const Blur = styled.div`
     
     
 
- `;
+//  `;
 
 
 const Icons = styled.div``;

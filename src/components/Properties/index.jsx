@@ -14,7 +14,7 @@ const Properties = () => {
     .then((res)=>{
       setData(res?.data || [])
     })
-  }, [search])
+  }, [search]);
   return (
     <Container>
       {

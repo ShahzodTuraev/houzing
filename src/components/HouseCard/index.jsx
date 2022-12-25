@@ -13,7 +13,7 @@ import noimg from '../../assets/img/noimage.png'
             city, 
             country, 
             description,
-            category
+            category,
         } = data;
   return (
     <Container>

@@ -30,7 +30,7 @@ const Img = styled.img`
 const Blur = styled.div`
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: 5px;
     right: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.4);
