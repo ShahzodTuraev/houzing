@@ -1,9 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Container, InnerContainer, Content, Icon, Wrapper, Bottom, Section} from './style';
-
+import { Container, InnerContainer, Content, Icon, Wrapper, Bottom} from './style';
  export const Footer = () => {
-  const navigate = useNavigate()
   return (
     <Container>
       <InnerContainer>
