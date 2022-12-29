@@ -113,3 +113,4 @@ import Similar from '../Similar'
 }
 
 export default HouseItem;
+// feature/house-card
