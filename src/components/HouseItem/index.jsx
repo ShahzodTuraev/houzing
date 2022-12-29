@@ -89,7 +89,7 @@ import Similar from '../Similar'
                 <br/>The residence is comprised of {data?.houseDetails?.beds || 2} bedrooms, 
                 {data?.houseDetails?.bath || 2} master bathrooms, 2 on-suite guest bathrooms, {data?.houseDetails?.room || 2} powder rooms, 2 offices, 
                 2 dressing rooms, a media room, an oversized eat-in gourmet chef's kitchen, 
-                and a sprawling 1,100 square-foot Great Room perfectly situated in the prime 
+                and a sprawling 1,000 square-foot Great Room perfectly situated in the prime 
                 southwest corner of the floor.
               </Description>
               <Description.Title>Location</Description.Title>
@@ -120,4 +120,4 @@ import Similar from '../Similar'
 }
 
 export default HouseItem;
-// feature/house-card
+
