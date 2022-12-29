@@ -43,7 +43,7 @@ import Similar from '../Similar'
                 <Content>
               <Section >
                 <div className="title">{data?.name}</div>
-                <div className="supTitle">{data?.city},{data?.address},{data?.country}</div>
+                <div className="supTitle">{data?.city}, {data?.address}, {data?.country}</div>
               </Section>
               <Content  pointer>
                 <Icons.Love/>
