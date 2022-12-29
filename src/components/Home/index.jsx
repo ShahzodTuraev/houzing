@@ -7,6 +7,7 @@ import Recommended from '../Recommended';
 import Why from '../Why';
 import Recent from '../Recent';
 import Banner from '../Banner';
+import Googlemaps from '../Generic/Yandex';
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
      <Category/>
      <Banner/>
      <Recent/>
+     <Googlemaps/>
     </Container>
   )
 }
