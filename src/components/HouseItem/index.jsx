@@ -15,12 +15,12 @@ import {
   Line
 } from './style';
 import {Input, Button} from '../Generic'
-// import {Yandex} from '../Generic/Yandex'
 import Similar from '../Similar'
 
  export const HouseItem = () => {
   const [data, setData] = useState({});
   const params = useParams();
+  console.log(data);
 
   useEffect(()=>{
     fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`, {
@@ -35,6 +35,7 @@ import Similar from '../Similar'
       window.scrollTo(0, 0)
       });
     }, [params?.id]);
+
   return (
     <Section>
     <Wrapper>
@@ -86,7 +87,7 @@ import Similar from '../Similar'
                 southwest corner of the floor.
               </Description>
               <Description.Title>Location</Description.Title>
-              {/* <Yandex /> */}
+              
               <Line />
         </Container>
         <Container flex={1}>
