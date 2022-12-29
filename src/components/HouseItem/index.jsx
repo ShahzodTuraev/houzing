@@ -23,17 +23,23 @@ import Similar from '../Similar'
   console.log(data);
 
   useEffect(()=>{
-    fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${ localStorage.getItem("token")}`,
-      },
-    })
-    .then((res)=>res.json())
-    .then((res)=>{
+    // fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: `Bearer ${ localStorage.getItem("token")}`,
+    //   },
+    // })
+    // .then((res)=>res.json())
+    // .then((res)=>{
+    //   setData(res?.data);
+    //   window.scrollTo(0, 0)
+    //   });
+    fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`)
+    .then((res) => res.json())
+    .then((res) => {
       setData(res?.data);
       window.scrollTo(0, 0)
-      });
+    });
     }, [params?.id]);
 
   return (
