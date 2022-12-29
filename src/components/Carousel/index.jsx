@@ -1,23 +1,22 @@
-import React, {useRef} from 'react';
+import React  from 'react';
 import { Carousel } from 'antd';
-import { Container, Arrow, Img, Blur, Contnet } from './style';
+import { Container,  Img, Blur, Contnet } from './style';
 
 import img1 from '../../assets/img/house1.png';
 import img2 from '../../assets/img/house2.png';
  export const GenCarousel = () => {
-    const slider = useRef();
-    const onChange = (currentSlide) => {
-        console.log(currentSlide);
-    };
+    // const onChange = (currentSlide) => {
+    //     console.log(currentSlide);
+    // };
 
-    const onMove=({
-        target:{
-        dataset: {name},
-        },
-        })=>{
-        if(name === 'right') slider.current.next();
-        if(name === 'left') slider.current.prev();
-    };
+    // const onMove=({
+    //     target:{
+    //     dataset: {name},
+    //     },
+    //     })=>{
+    //     if(name === 'right') slider.current.next();
+    //     if(name === 'left') slider.current.prev();
+    // };
   return (
       <Container>
         <Carousel autoplay>
@@ -31,8 +30,8 @@ import img2 from '../../assets/img/house2.png';
             <Contnet.Price>$5,250/month</Contnet.Price>   
             
         </Contnet>
-        <Arrow onClick={onMove} data-name='left' left={'true'} />
-        <Arrow onClick={onMove} data-name='right' />
+        {/* <Arrow onClick={onMove} data-name='left' left={'true'} />
+        <Arrow onClick={onMove} data-name='right' /> */}
     </Container>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Container, Content} from './style';
 import { Input, Button } from '../Generic';
 import useRequest from '../../hooks/useRequest'
@@ -11,13 +11,14 @@ import {message} from 'antd';
   const [body, setBody] = useState({});
   const [error, setError] = useState(false);
 
-
+console.log(error);
   const onChange =({target:{value, placeholder}})=>{
     setBody({
       ...body,
       [placeholder]: value,
     });
     setError(false)
+    console.log(error);
   };
 
   const info = () => {
@@ -28,28 +29,27 @@ import {message} from 'antd';
   };
 
   const onSubmit =async()=>{
-    console.log(body);
     request({url:`/public/auth/login`, method: 'POST', body, me: true}).then(res=>{
       if(res?.authenticationToken)
       navigate('/home');
       localStorage.setItem('token', res?.authenticationToken)
       info()
     });
-      //   try{
-  //     let res = await fetch('https://houzing-app.herokuapp.com/api/public/auth/login', {
-  //           method: 'POST',
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //           },
-  //           body: JSON.stringify(body),
-          // }).then(res=>res.json());
-          // if(res?.authenticationToken)
-          // navigate('/home');
-          // localStorage.setItem('token', res?.authenticationToken)
-          // info();  
-  // }catch(error){
-  //   warning();
-  // }
+        try{
+      let res = await fetch('https://houzing-app.herokuapp.com/api/public/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+          }).then(res=>res.json());
+          if(res?.authenticationToken)
+          navigate('/home');
+          localStorage.setItem('token', res?.authenticationToken)
+          info();  
+  }catch(error){
+    warning();
+  }
 };
  
   return (

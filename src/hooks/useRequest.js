@@ -1,10 +1,8 @@
 import { message } from "antd";
-import {useNavigate } from "react-router-dom";
 
 const {REACT_APP_BASE_URL} = process.env;
 
 export const useRequest = () =>{
-    const navigate = useNavigate()
     const warning = (err)=>{
         message.warning(err || 'Something went wrong')
     }
