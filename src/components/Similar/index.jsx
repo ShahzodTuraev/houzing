@@ -17,7 +17,7 @@ const settings = {
   // appendDots: (dots) => <h1>{dots}</h1>
 };
 
- export const Recommended = () => {
+ export const Similar = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
       useEffect(()=>{
@@ -30,7 +30,7 @@ const settings = {
   return (
       <Container>
         <Content>
-          <h1 className="title">Recommended</h1>
+          <h1 className="title">Similar Listing</h1>
           <h1 className="supTitle">Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.</h1>
         </Content>
          <Slider  {...settings}>
@@ -47,4 +47,4 @@ const settings = {
   )
 }
 
-export default Recommended;
+export default Similar;

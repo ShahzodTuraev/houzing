@@ -84,8 +84,9 @@ const Bottom = styled.div`
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     margin: 0 130px;
     max-width: 1440px;
+    margin: auto;
     width: 100%;
-    padding: 24px 0;
+    padding-top: 24px;
 `;
 
 export {Container, InnerContainer, Content, Icon, Wrapper, Bottom}

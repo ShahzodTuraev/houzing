@@ -40,17 +40,24 @@ body{
 .supTitle{
   color:  #696969;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  text-align  : center;
 }
 
 .info{
-
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #696969;
+}
+
+.infoRate{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0D263B; 
 }
 
 .inline{
@@ -62,5 +69,5 @@ body{
 
 .slick-prev:before, 
 .slick-next:before{
-  color: red !important;
+  color: aqua !important;
 }

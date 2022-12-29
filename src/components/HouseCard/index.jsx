@@ -3,7 +3,7 @@ import { Container, Img, Content, Details, Icons, Divider} from './style';
 import noimg from '../../assets/img/noimage.png'
 
 
- export const HouseCard = ({data ={}}) => {
+ export const HouseCard = ({data ={}, onClick}) => {
     const {
             attachments,
             price, 
@@ -16,7 +16,7 @@ import noimg from '../../assets/img/noimage.png'
             category,
         } = data;
   return (
-    <Container>
+    <Container onClick={onClick}>
        <Img src={(attachments && attachments[0]?.imgPath) || noimg}/>
        <Content>
             <div className="subTitle inline">{city} {country} {description}</div>

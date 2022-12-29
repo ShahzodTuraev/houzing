@@ -32,14 +32,13 @@ const settings = {
         <Content>
           <h1 className="title">Recent Properties for Rent</h1>
           <h1 className="supTitle">Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.</h1>
-
         </Content>
          <Slider  {...settings}>
             {
               data.map(value=>{
                 return(
                  <HouseCard key={value.id}
-                 onClick ={()=>navigate(`/properties?category_id=${value.id}`)} 
+                 onClick ={()=>navigate(`/properties/${value.id}`)} 
                  data={value} 
                  />)})
             }

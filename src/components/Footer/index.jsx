@@ -50,7 +50,7 @@ import { Container, InnerContainer, Content, Icon, Wrapper, Bottom} from './styl
           </Content>
       </InnerContainer>
       <Bottom>
-        <Content.Item>Copyright © 2022 CreativeLayers. All Right Reserved.</Content.Item>
+        <Content.Item>Copyright © 2022 CreativeLayers. All Right Reserved. Houzing Project by Shahzod</Content.Item>
         </Bottom>    
     </Container>
   )

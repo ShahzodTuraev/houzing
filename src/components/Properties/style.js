@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between ;
-    gap: 20px; */
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -12,6 +8,7 @@ const Container = styled.div`
     padding: var(--padding);
     max-width: 1440px;
     margin: auto;
+    margin-top: 70px;
     width: 100%;
 
 `

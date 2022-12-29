@@ -2,10 +2,8 @@ import React, {useRef} from 'react';
 import { Carousel } from 'antd';
 import { Container, Arrow, Img, Blur, Contnet } from './style';
 
-import img1 from '../../assets/img/house1.png'
-import img2 from '../../assets/img/house2.png'
-
-
+import img1 from '../../assets/img/house1.png';
+import img2 from '../../assets/img/house2.png';
  export const GenCarousel = () => {
     const slider = useRef();
     const onChange = (currentSlide) => {
@@ -22,7 +20,7 @@ import img2 from '../../assets/img/house2.png'
     };
   return (
       <Container>
-        <Carousel ref={slider} afterChange={onChange}>
+        <Carousel autoplay>
             <Img src={img1}/>
             <Img src={img2}/>
         </Carousel>
@@ -33,7 +31,7 @@ import img2 from '../../assets/img/house2.png'
             <Contnet.Price>$5,250/month</Contnet.Price>   
             
         </Contnet>
-        <Arrow onClick={onMove} data-name='left' left />
+        <Arrow onClick={onMove} data-name='left' left={'true'} />
         <Arrow onClick={onMove} data-name='right' />
     </Container>
   )
