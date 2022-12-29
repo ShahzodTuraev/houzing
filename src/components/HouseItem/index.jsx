@@ -15,7 +15,7 @@ import {
   Line
 } from './style';
 import {Input, Button} from '../Generic'
-import {Yandex} from '../Generic/Yandex'
+// import {Yandex} from '../Generic/Yandex'
 import Similar from '../Similar'
 
  export const HouseItem = () => {
@@ -86,7 +86,7 @@ import Similar from '../Similar'
                 southwest corner of the floor.
               </Description>
               <Description.Title>Location</Description.Title>
-              <Yandex />
+              {/* <Yandex /> */}
               <Line />
         </Container>
         <Container flex={1}>

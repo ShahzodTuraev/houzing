@@ -5,24 +5,24 @@ const Container = styled.div`
     height: fit-content;
 `;
 
-const Arrow = styled(arrow)`
-    position: absolute;
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    padding: 18px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: ${({left}) =>(
-        left ? 'rotate(-90deg)' : 'rotate(90deg)')
-        };
-    left: ${({left})=>left && '50px'};
-    right: ${({left})=>!left && '20px'};
-    cursor: pointer;
-    :hover{
-       background: rgba(255, 255, 255, 0.4);
-    } 
-`;
+// const Arrow = styled(arrow)`
+//     position: absolute;
+//     top: 50%;
+//     width: 50px;
+//     height: 50px;
+//     padding: 18px;
+//     border-radius: 50%;
+//     background: rgba(255, 255, 255, 0.2);
+//     transform: ${({left}) =>(
+//         left ? 'rotate(-90deg)' : 'rotate(90deg)')
+//         };
+//     left: ${({left})=>left && '50px'};
+//     right: ${({left})=>!left && '20px'};
+//     cursor: pointer;
+//     :hover{
+//        background: rgba(255, 255, 255, 0.4);
+//     } 
+// `;
 
 const Img = styled.img`
     width: 100%;`;
@@ -67,4 +67,4 @@ Contnet.Price = styled.div`
     line-height: 36px;
     letter-spacing: -0.02em;
 `;
-export {Container, Arrow, Img, Blur, Contnet}
+export {Container, Img, Blur, Contnet}
