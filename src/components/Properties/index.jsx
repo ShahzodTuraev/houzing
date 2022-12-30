@@ -16,7 +16,6 @@ const Properties = () => {
     .then((res)=>{
       setData(res?.data || [])
     })
-    // request({url:'/houses/list${search}'})
   }, [search]);
 
   const onSelect =(id)=>{

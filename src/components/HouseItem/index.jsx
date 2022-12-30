@@ -3,37 +3,30 @@ import { Checkbox } from 'antd';
 import { useParams } from 'react-router-dom';
 import nouser from '../../assets/img/nouser.png'
 import { 
-  Container, 
+  Container,
+  Blur, 
   Wrapper, 
   Content, 
   Message, 
   Details, 
   Section, 
-  Icons, 
+  Icons,
+  ImageContainer,
+  ImgContainer, 
   Description,
   User,
   Line
 } from './style';
-import {Input, Button} from '../Generic'
-import Similar from '../Similar'
+import {Input, Button} from '../Generic';
+import Similar from '../Similar';
+import Feature from './Feature';
+import Reviews from './Reviews';
 
  export const HouseItem = () => {
   const [data, setData] = useState({});
   const params = useParams();
-  console.log(data);
-
+  
   useEffect(()=>{
-    // fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: `Bearer ${ localStorage.getItem("token")}`,
-    //   },
-    // })
-    // .then((res)=>res.json())
-    // .then((res)=>{
-    //   setData(res?.data);
-    //   window.scrollTo(0, 0)
-    //   });
     fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`)
     .then((res) => res.json())
     .then((res) => {
@@ -41,15 +34,43 @@ import Similar from '../Similar'
       window.scrollTo(0, 0)
     });
     }, [params?.id]);
-
   return (
     <Section>
-    <Wrapper>
+      
+      <ImageContainer>
+        <ImageContainer.Main
+          src={(data?.attachments && data?.attachments[0]?.imgPath) || 'noimg'}
+          alt="test"
+        />
+        <ImgContainer>
+          {data?.attachments &&
+            data?.attachments?.slice(1, 5).map((value, index) => {
+              return data?.attachments?.length > 5 && index === 3 ? (
+                <Blur.Container>
+                  <ImageContainer.Subimg
+                    key={value.id}
+                    src={value?.imgPath}
+                    alt="test"
+                  />
+                  <Blur>+{data?.attachments?.length - 5}</Blur>
+                </Blur.Container>
+              ) : (
+                <ImageContainer.Subimg
+                  key={value.id}
+                  src={value?.imgPath}
+                  alt="test"
+                />
+              );
+            })}
+        </ImgContainer>
+      </ImageContainer>      
+    <Wrapper>     
         <Container  flex={3}>
                 <Content>
               <Section >
                 <div className="title">{data?.name}</div>
-                <div className="supTitle">{data?.city}, {data?.address}, {data?.country}</div>
+                <div className="supTitle">address: {data?.city}, {data?.address}, {data?.country}</div>
+                <div className="supTitle">zip-code: {data?.zipCode} </div>
               </Section>
               <Content  pointer>
                 <Icons.Love/>
@@ -92,8 +113,11 @@ import Similar from '../Similar'
                 and a sprawling 1,000 square-foot Great Room perfectly situated in the prime 
                 southwest corner of the floor.
               </Description>
-              <Description.Title>Location</Description.Title>
-              
+              <Description.Title>Features</Description.Title>
+              <Feature />
+              <Line />
+              <Description.Title>4.67 (14 reviews)</Description.Title>
+              <Reviews />      
               <Line />
         </Container>
         <Container flex={1}>
@@ -101,7 +125,7 @@ import Similar from '../Similar'
             <Content even>
               <User.Img alt='user img' src={nouser}/>
               <Section>
-                <div className="subTitle">Darrel Steward</div>
+                <div className="subTitle">{data?.user?.firstname} {data?.user?.lastname} </div>
                 <Details.Title>(123)456-7890</Details.Title>
               </Section>
             </Content>
@@ -118,6 +142,5 @@ import Similar from '../Similar'
     </Section>
   )
 }
-
 export default HouseItem;
 
