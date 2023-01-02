@@ -1,31 +1,35 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
+import useRequest from "../../hooks/useRequest";
 import { Wrapper, Container, TitleBox, AntTable, Icons, User } from './style';
 import noimg from '../../assets/img/noimage.png';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../Generic';
-const {REACT_APP_BASE_URL: url} = process.env;
+import { useQuery } from "react-query";
+import { message } from "antd";
  
 const MyProfile = () => {
-  const [data, setData] = useState([]);
-  const {search} = useLocation();
-  const navigate = useNavigate();
 
-  useEffect(()=>{
-    fetch(`${url}/houses/me`)
-    .then((res)=>res.json())
-    .then((res)=>{
-      setData(res?.data || [])
-    })
-  }, [search]);
+  const { search } = useLocation();
+  const navigate = useNavigate();
+  const request = useRequest();
+
+  const { data, refetch } = useQuery([search], () => {
+    return request({ url: `/houses/me`, token: true });
+  });
 
   const columns = [
     {
       title: 'Listing Title',
       key: 'name',
-      render: (data)=> {return(
+      render: (data)=> {
+        return(
         <User sb>
           <User>
-            <User.Img src ={(data.attachments && data.attachments[0]?.imgPath) || noimg}/>
+            <User.Img 
+            src ={
+              (data.attachments && data.attachments[0]?.imgPath) || noimg
+              }
+              />
             <User flex>
               <div className="subTitle">
                 {data.country}, {data.address}
@@ -53,7 +57,7 @@ const MyProfile = () => {
     {
       title: 'Email',
       render: ({user})=> <span>{user.email}</span> ,
-      key: 'user.email',      
+      key: 'email',      
     },
     {
       title: 'Sale Price',
@@ -63,16 +67,38 @@ const MyProfile = () => {
     },
     {
       title: 'Action',
-      key: 'user.email',
+      key: 'email',
       width: 150,
       render: (data)=>{
-        return <div>
-          <Icons.Edit/>
-          <Icons.Delete/>
-          </div>
+        return (
+          <User>
+            <Icons.Edit
+              onClick={(event) => {
+                event.stopPropagation();
+                navigate(`/myprofile/edithouse/${data?.id}`);
+              }}
+            />
+            <Icons.Delete
+              onClick={(event) => {
+                event.stopPropagation();
+                onDelete(data?.id);
+              }}
+            />
+          </User>
+          )
       },
     },
   ];
+  const onDelete = (id) => {
+    request({ url: `/houses/${id}`, token: true, method: "DELETE" }).then(
+      (res) => {
+        if (res?.success) {
+          message.info("Successfully deleted");
+          refetch();
+        }
+      }
+    );
+  };
     return (
       <Wrapper>
         <TitleBox>
@@ -80,8 +106,15 @@ const MyProfile = () => {
           <Button onClick={()=>navigate('/myprofile/newhouse')}>Add House</Button>
         </TitleBox>
         <Container>
-        <AntTable 
-        dataSource={data} 
+        <AntTable
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: () => {
+              navigate(`/properties/${record?.id}`);
+            }, // click row
+          };
+        }}
+        dataSource={data?.data} 
         columns={columns} 
         />
       </Container>

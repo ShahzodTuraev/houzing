@@ -136,7 +136,12 @@ import useSearch from '../../hooks/useSearch';
     <Container>
       <Input
       icon={<Icons.Houses/>}
-      placeholder={'Enter an address, neighborhood, city, or ZIP code'} />
+      placeholder={'Enter an address, neighborhood, city, or ZIP code'}
+      defaultValue={query.get('city')}
+        onChange={onChange}
+        ref={cityRef} 
+        name='address'
+      />
       <Dropdown 
         overlay={menu} 
         placement="bottomRight" 
@@ -147,7 +152,7 @@ import useSearch from '../../hooks/useSearch';
       <Button type='light'><Icons.Filter/>Advanced</Button>
         </div>       
       </Dropdown>
-          <Button>
+          <Button >
             <Icons.Search/>Search
           </Button>
      
