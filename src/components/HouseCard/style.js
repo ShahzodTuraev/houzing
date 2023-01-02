@@ -63,9 +63,12 @@ width: 25px;
 height: 25px;
 padding: 5px;
 border-radius: 50%;
-background: #f6f8f9;
+background: ${({favorite})=>(favorite ? 'red':'#f6f8f9')};
 margin-left: 20px;
 cursor: pointer;
+& path {
+    fill: ${({favorite})=>favorite && 'white'}
+}
 :active{
     transform: scale(0.9);
 }

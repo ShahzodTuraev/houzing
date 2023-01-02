@@ -25,7 +25,7 @@ import Reviews from './Reviews';
  export const HouseItem = () => {
   const [data, setData] = useState({});
   const params = useParams();
-  
+
   useEffect(()=>{
     fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`)
     .then((res) => res.json())

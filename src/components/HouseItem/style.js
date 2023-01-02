@@ -154,7 +154,6 @@ const Blur = styled.div`
   font-weight: 600;
   font-size: 36px;
   line-height: 44px;
-  /* identical to box height, or 122% */
   letter-spacing: -0.02em;
   color: #ffffff;
   width: 100%;

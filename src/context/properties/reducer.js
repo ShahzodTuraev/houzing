@@ -1,7 +1,7 @@
-const reducer =(state, {action, type})=>{
+const reducer =(state, {payload, type})=>{
     switch(type){
-        case 'plus': 
-            return state;
+        case 'refetch': 
+            return {...state, refetch: payload};
         default: 
             return state;
     }

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,4 +10,5 @@ const Content = styled.div`
   border-radius: 3px;
   padding: 30px;
 `;
-export {Content}
+
+export { Content };

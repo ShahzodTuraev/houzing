@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { Container, Content} from './style';
+import { Content} from './style';
 import { Input, Button } from '../Generic';
 import useRequest from '../../hooks/useRequest'
 import { useNavigate } from 'react-router-dom';
@@ -20,14 +20,12 @@ console.log(error);
     setError(false)
     console.log(error);
   };
-
   const info = () => {
     message.info('Successfully Signed in!');
   };
   const warning = () => {
     message.warning('Email or password is not correct!');
   };
-
   const onSubmit =async()=>{
     request({url:`/public/auth/login`, method: 'POST', body, me: true}).then(res=>{
       if(res?.authenticationToken)
@@ -51,16 +49,13 @@ console.log(error);
     warning();
   }
 };
- 
   return (
-      <Container>
-        <Content>
-        <h1 className="title">Sign in</h1>
-          <Input onChange={onChange} type ='email' placeholder ='email' />
-          <Input onChange={onChange} type ='password' placeholder ='password' />
-          <Button onClick={onSubmit} width='%'>Sign in</Button>
-        </Content>
-    </Container>
+    <Content>
+      <h1 className="title">Sign in</h1>
+      <Input onChange={onChange} type ='email' placeholder ='email' />
+      <Input onChange={onChange} type ='password' placeholder ='password' />
+      <Button onClick={onSubmit} width='%'>Sign in</Button>
+    </Content>
   )
 }
 
